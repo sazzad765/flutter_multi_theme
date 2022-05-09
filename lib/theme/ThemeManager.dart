@@ -17,7 +17,8 @@ class ThemeNotifier with ChangeNotifier {
     dividerColor: Colors.black12,
   );
 
-  final lightTheme = ThemeData(backgroundColor: Colors.white,
+  final lightTheme = ThemeData(
+    backgroundColor: Colors.white,
     primaryColor: CustomColors.primary,
     accentColor: CustomColors.primary,
     disabledColor: CustomColors.primary,
@@ -47,22 +48,23 @@ class ThemeNotifier with ChangeNotifier {
     ),
     snackBarTheme: const SnackBarThemeData(
       contentTextStyle:
-      TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
     ),
   );
 
-  late ThemeData _themeData;
-  ThemeData getTheme() => _themeData;
+  ThemeData? _themeData;
+
+  ThemeData getTheme() => _themeData ?? lightTheme;
 
   ThemeNotifier() {
     StorageManager.readData('themeMode').then((value) {
       var themeMode = value ?? 'light';
       if (themeMode == 'light') {
-        _isDark = false;
         _themeData = lightTheme;
+        _isDark = false;
       } else {
-        _isDark = true;
         _themeData = darkTheme;
+        _isDark = true;
       }
       notifyListeners();
     });
