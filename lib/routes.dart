@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:speedoz/view/generate.dart';
 import 'package:speedoz/view/home.dart';
 
 class RouteName {
   static String homeScreen = "/";
-  static String addDepositScreen = "/addDepositScreen";
+  static String generateScreen = "/generateScreen";
   static String addMealCostScreen = "/addMealCostScreen";
 }
 
 Map<String, WidgetBuilder> routes({Object? arg}) => {
       RouteName.homeScreen: (context) => const HomeScreen(),
-      // RouteName.addDepositScreen: (context) => const AddDeposit(),
+      RouteName.generateScreen: (context) => const GenerateScreen(),
       // RouteName.addMealCostScreen: (context) => const AddMealCostScreen(),
     };
 
